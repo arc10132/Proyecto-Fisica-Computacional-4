@@ -45,3 +45,61 @@ donde:
 
 
 
+
+Ecuacion de Poisson:
+El potencial gravitacional $\Phi(x,y)$ satisface la ecuación de Poisson:
+
+$$
+\nabla^2 \Phi(x,y) = 4\pi G \left[\rho_\star(x,y) + \rho_{\text{disk}}(x,y)\right]
+$$
+
+donde:
+- $\nabla^2$ es el operador Laplaciano en 2D
+- $G$ es la constante gravitacional
+- $\rho_\star$ es la densidad de la estrella
+- $\rho_{\text{disk}}$ es la densidad del disco
+
+
+El campo gravitacional se obtiene como el gradiente negativo del potencial:
+
+$$
+\mathbf{g}(x,y) = -\nabla \Phi(x,y) = -\left(\frac{\partial\Phi}{\partial x}, \frac{\partial\Phi}{\partial y}\right)
+$$
+
+donde:
+- $\nabla$ es el operador gradiente
+- $\mathbf{g}$ es la aceleración gravitacional
+
+
+La dinámica de las partículas está gobernada por:
+
+$$
+\begin{aligned}
+\frac{d\mathbf{v}}{dt} &= \mathbf{g}(x, y) - \gamma (\mathbf{v} - \mathbf{v}_{\text{gas}}(r)) \\
+\frac{d\mathbf{r}}{dt} &= \mathbf{v}
+\end{aligned}
+$$
+
+donde:
+- $\mathbf{v}$ es la velocidad de la partícula
+- $\gamma$ es el coeficiente de arrastre (fricción)
+- $\mathbf{v}_{\text{gas}}$ es la velocidad del gas
+
+
+El gas del disco rota con un perfil de velocidad tipo Kepler:
+
+$$
+\mathbf{v}_{\text{gas}}(r) = v_0 \left( \frac{r_0}{r} \right)^\alpha \hat{\phi}, \quad 
+\hat{\phi} = \left( -\frac{y}{r}, \frac{x}{r} \right)
+$$
+
+donde:
+- $v_0$ es la velocidad en el radio de referencia $r_0$
+- $\alpha$ es el índice de velocidad (típicamente $\alpha = 0.5$ para Kepleriano)
+- $\hat{\phi}$ es el vector unitario azimutal
+- $r = \sqrt{x^2 + y^2}$ es la distancia radial
+
+
+
+
+
