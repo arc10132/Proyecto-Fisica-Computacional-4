@@ -1,5 +1,5 @@
 """
-Created on 2024-01-23 
+Created on 2026-01-23 
 
 """
 # Importamos las librerias necesarias para los calculos dentro del modulo
@@ -21,4 +21,5 @@ def density_profile(r, rho_0, r_0, p, r_min):
         array: Densidad del disco.
     """
     density = np.where(r >= r_min, rho_0 * (r / r_0) ** (-p), 0)
+
     return density
