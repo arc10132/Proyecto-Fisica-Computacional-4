@@ -32,7 +32,7 @@ La estrella central se modela como un núcleo compacto uniforme de radio $R_\sta
 $$
 \rho_\star(x, y) =
 \begin{cases} 
-\dfrac{M_\star}{\pi R_\star^2} & \sqrt{x^2 + y^2} \leq R_\star,
+\dfrac{M_\star}{\pi R_\star^2} & \sqrt{x^2 + y^2} \leq R_\star, \\
 0 & \sqrt{x^2 + y^2} > R_\star,
 \end{cases}
 $$
