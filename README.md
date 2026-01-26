@@ -95,7 +95,7 @@ $$
 
 donde:
 - $v_0$ es la velocidad en el radio de referencia $r_0$
-- $\alpha$ es el índice de velocidad (típicamente $\alpha = 0.5$ para Kepleriano)
+- $\alpha$ es el índice de velocidad
 - $\hat{\phi}$ es el vector unitario azimutal
 - $r = \sqrt{x^2 + y^2}$ es la distancia radial
 
