@@ -57,3 +57,26 @@ def Poisson_equation(x , y ,dx, star_density, density_profile):
             
     return phi 
           
+
+def campo_gravitacional(Gradient_potential, dx, dy):
+    """
+    Calcula el campo gravitacional a partir del gradiente del potencial.
+    Args:
+        Gradient_potential (array): Gradiente del potencial gravitacional.
+        dx (float): Paso espacial en la dirección x.
+        dy (float): Paso espacial en la dirección y.
+    Returns:
+        gx (array): Componente x del campo gravitacional.
+        gy (array): Componente y del campo gravitacional.
+    """
+    Nx, Ny = Gradient_potential.shape
+    gx = np.zeros(shape=(Nx-2,Ny-2))
+    gy = np.zeros_like(gx)
+
+
+    for i in range(1, Nx-2):
+        for j in range(1, Ny-2):
+            gx[i,j] = -(Gradient_potential[i+1,j] - Gradient_potential[i-1,j])/(2*dx) 
+            gy[i,j] = -(Gradient_potential[i,j+1] - Gradient_potential[i,j-1])/(2*dy) 
+
+    return gx, gy
