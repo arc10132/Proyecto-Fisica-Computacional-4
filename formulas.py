@@ -13,7 +13,7 @@ def density_profile(r, rho_0, r_0, p, r_min):
     """
     Calcula el perfil de densidad del disco protoplanetario.
     Args:
-        r (float): Radio desde el centro del disco.
+        r (array): Radio desde el centro del disco.
         rho_0 (float): Densidad del radio r_0.
         r_0 (float): Radio de referencia.
         p (float): Indice de densidad.
@@ -46,16 +46,58 @@ def star_density(x , y , Mass, Radius):
     return star_density
 
 
-def Poisson_equation(x , y ,dx, star_density, density_profile):
+def Poisson_equation(dx, star_density, disk_density,
+                     tol=1e-6, max_iter=10000):
     """
-    """
-    phi = np.zeros_like(x)
+    Resuelve la ecuación de Poisson en 2D mediante el método de Jacobi.
 
-    for i in range(1, x.shape[0]-1):
-        for j in range(1, y.shape[1]-1):
-            phi[i,j]= ((phi[i,j+1]+phi[i+1,j]+phi[i,j-1]+phi[i-1,j])/4)- np.pi* consts.G * (star_density[i,j] +density_profile[i,j] *dx**2)
-            
-    return phi 
+
+    Args:
+        dx (float): paso espacial de la malla.
+        star_density (array): densidad superficial de la estrella.
+        disk_density (array): densidad superficial del disco.
+        tol (float): tolerancia de convergencia relativa.
+        max_iter (int): número máximo de iteraciones.
+
+    Returns:
+        phi (array): potencial gravitacional convergente.
+    """
+
+    rho = star_density + disk_density
+
+    # estimación inicial
+    phi = np.zeros_like(rho)
+    phi_new = np.zeros_like(rho)
+
+    Nx, Ny = phi.shape
+
+    for k in range(max_iter):
+
+        # actualización Jacobi
+        for i in range(1, Nx-1):
+            for j in range(1, Ny-1):
+
+                phi_new[i,j] = (
+                    (phi[i+1,j] + phi[i-1,j] +
+                     phi[i,j+1] + phi[i,j-1]) / 4
+                    - np.pi * consts.G * rho[i,j] * dx**2
+                )
+
+        # criterio de convergencia relativo
+        num = np.max(np.abs(phi_new - phi))
+        den = np.max(np.abs(phi_new)) + 1e-14
+
+        epsilon = num / den
+
+        if epsilon < tol:
+            print(f"Jacobi convergió en {k} iteraciones")
+            return phi_new
+
+        phi[:] = phi_new[:]
+
+    
+    return phi
+
           
 
 def campo_gravitacional(Gradient_potential, dx, dy):
@@ -80,3 +122,4 @@ def campo_gravitacional(Gradient_potential, dx, dy):
             gy[i,j] = -(Gradient_potential[i,j+1] - Gradient_potential[i,j-1])/(2*dy) 
 
     return gx, gy
+
