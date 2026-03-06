@@ -63,7 +63,7 @@ def Poisson_equation(dx, star_density, disk_density,
         phi (array): potencial gravitacional convergente.
     """
 
-    rho = star_density + disk_density
+    rho = disk_density + star_density
 
     # estimación inicial
     phi = np.zeros_like(rho)
@@ -78,9 +78,9 @@ def Poisson_equation(dx, star_density, disk_density,
             for j in range(1, Ny-1):
 
                 phi_new[i,j] = (
-                    (phi[i+1,j] + phi[i-1,j] +
-                     phi[i,j+1] + phi[i,j-1]) / 4
-                    - np.pi * consts.G * rho[i,j] * dx**2
+                    ((phi[i+1,j] + phi[i-1,j] +
+                     phi[i,j+1] + phi[i,j-1]) / 4)
+                    - (np.pi * consts.G * rho[i,j] * dx**2)
                 )
 
         # criterio de convergencia relativo
