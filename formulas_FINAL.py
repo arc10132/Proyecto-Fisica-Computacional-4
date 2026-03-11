@@ -62,6 +62,7 @@ def Poisson_equation(dx, star_density, disk_density,
     Returns:
         phi (array): potencial gravitacional convergente.
     """
+    G= 1.0  # Constante de gravitación universal 
 
     rho = disk_density + star_density
 
@@ -80,7 +81,7 @@ def Poisson_equation(dx, star_density, disk_density,
                 phi_new[i,j] = (
                     ((phi[i+1,j] + phi[i-1,j] +
                      phi[i,j+1] + phi[i,j-1]) / 4)
-                    - (np.pi * consts.G * rho[i,j] * dx**2)
+                    - (np.pi * G * rho[i,j] * dx**2)
                 )
 
         # criterio de convergencia relativo
@@ -118,8 +119,9 @@ def campo_gravitacional(Gradient_potential, dx, dy):
 
     for i in range(1, Nx-2):
         for j in range(1, Ny-2):
-            gx[i,j] = -(Gradient_potential[i+1,j] - Gradient_potential[i-1,j])/(2*dx) 
-            gy[i,j] = -(Gradient_potential[i,j+1] - Gradient_potential[i,j-1])/(2*dy) 
+            gx[i,j] = (-1)*(Gradient_potential[i+1,j] - Gradient_potential[i-1,j])/(2*dx) 
+            gy[i,j] = (-1)*(Gradient_potential[i,j+1] - Gradient_potential[i,j-1])/(2*dy) 
 
     return gx, gy
+
 
