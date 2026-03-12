@@ -186,32 +186,3 @@ def rk4_method_second_order_2D(f: Callable, t0: float, r0: tuple, v0: tuple, tf:
         r[n+1] = r[n] + (m1 + 2*m2 + 2*m3 + m4) / 6
 
     return t, r, v
-
-
-
-def second_law(t, r, v):
-    x, y = r
-    vx, vy = v
-
-    # gravedad interpolada
-    gx_val, gy_val = g(x, y)
-
-    # radio
-    r_mag = np.sqrt(x**2 + y**2) + 1e-10
-
-    # dirección azimutal
-    phi_hat = np.array([-y/r_mag, x/r_mag])
-
-    # velocidad del gas
-    v_gas_mag = v0_gas * (r0_gas / r_mag)**alpha
-    v_gas = v_gas_mag * phi_hat
-
-    # arrastre
-    ax_drag = -gamma * (vx - v_gas[0])
-    ay_drag = -gamma * (vy - v_gas[1])
-
-    # aceleración total
-    ax = gx_val + ax_drag
-    ay = gy_val + ay_drag
-
-    return np.array([ax, ay])
