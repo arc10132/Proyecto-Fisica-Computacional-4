@@ -104,7 +104,7 @@ donde:
 ---
 ## Integrantes:
 
-- Harry Gonzáles Garrido
+- Harry González Garrido
 - Tomás Inzulza Mejías
 
 ---
