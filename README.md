@@ -1,6 +1,8 @@
 # Migración Orbital de Partículas en Discos Protoplanetarios 
 
-En este proyecto se estudiará la migración de partículas sólidas inmersas en un disco protoplanetario que rodea a una estrella central. El disco presenta un **hueco interno**, es decir, no hay gas dentro de un radio r_min alrededor de la estrella. El gas ejerce dos efectos principales sobre partículas:
+
+
+Este proyecto se realizó como trabajo final para el ramo Física Computacional IV de la carrera Astrofísica con mención en ciencia de datos de la Universidad de Santiago de Chile. Se estudiará la migración de partículas sólidas inmersas en un disco protoplanetario que rodea a una estrella central. El disco presenta un **hueco interno**, es decir, no hay gas dentro de un radio r_min alrededor de la estrella. El gas ejerce dos efectos principales sobre partículas:
 
 1.- Su **gravedad**, que contribuye al potencial total del sistema.
 
@@ -99,7 +101,19 @@ donde:
 - $\hat{\phi}$ es el vector unitario azimutal
 - $r = \sqrt{x^2 + y^2}$ es la distancia radial
 
+---
+## Integrantes:
 
+- Harry Gonzáles Garrido
+- Tomás Inzulza Mejías
 
+---
+## Características:
 
-
+- Modelar la densidad de un disco protoplanetario 
+- Modelar la densidad de una estrella con un modelo simplificado uniforme
+- Modela la densidad de un sistema estrella-disco 
+- Discretización del potencial gravitacional mediante la ecuación de Poisson
+- Formación del campo gravitacional mediante el gradiente del potencial gravitacional, esto mediante la función RegularGridInterpolator de scipy
+- Modelo físico de segunda ley de newton con arrastre por medio de la velocidad del gas, utilizado como medio, implementado con el método RK4 
+- Generación de gráficos de todo lo anterior
