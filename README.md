@@ -5,8 +5,8 @@ El objetivo es estudiar la migración de **partículas sólidas** inmersas en un
 
 El disco presenta un **hueco interno**, es decir, no hay gas dentro de un radio `r_min` alrededor de la estrella. El gas ejerce dos efectos principales sobre las partículas:
 
-1. **Gravedad**, que contribuye al potencial total del sistema.  
-2. **Arrastre**, que tiende a acelerar o frenar a las partículas, provocando migración radial en el disco.
+1. **Gravedad**, pertenecientes a la estrella y al disco, que contribuye al potencial total del sistema.  
+2. **Arrastre** del gas, que tiende a acelerar o frenar a las partículas, provocando migración radial en el disco.
 
 ---
 
